@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class User {
     String username;
     String name;
-    int password;
+    String password;
     String securityQuestion;
     String answer;
     
@@ -37,9 +37,9 @@ public class User {
             if(rs.next()){
                 user.username = rs.getString(1);
                 user.name = rs.getString(2);
-                user.password = Integer.getInteger(rs.getString(3));
+                user.password = rs.getString(3);
                 user.securityQuestion = rs.getString(4);
-                user.answer = rs.getString(4);
+                user.answer = rs.getString(5);
 
                 rs.close();
                 pst.close();
