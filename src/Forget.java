@@ -1,3 +1,9 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +15,9 @@
  * @author user
  */
 public class Forget extends javax.swing.JFrame {
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pst;
 
     /**
      * Creates new form Forget
@@ -16,6 +25,35 @@ public class Forget extends javax.swing.JFrame {
     public Forget() {
         initComponents();
     }
+    
+    // Function for searching information with username
+    public String search(){
+        String username = jTextField1.getText();
+        String sql = "select * from account where Username='"+username+"'";
+        String question_ans = null;
+        
+        try{
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            if(rs.next()){
+                question_ans = rs.getString(5);
+                
+                jTextField2.setText(rs.getString(1));
+                jTextField3.setText(rs.getString(4));
+                rs.close();
+                pst.close();
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect Username");
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        return question_ans;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,14 +91,35 @@ public class Forget extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Projects\\Java\\LibraryManagementSystem\\images\\search.gif")); // NOI18N
         jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon("C:\\Projects\\Java\\LibraryManagementSystem\\images\\inside-logout-icon.png")); // NOI18N
         jButton3.setText("Back");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setEditable(false);
+
+        jTextField3.setEditable(false);
 
         jLabel3.setText("Your Security Question");
 
+        jTextField5.setEditable(false);
+
         jButton2.setIcon(new javax.swing.ImageIcon("C:\\Projects\\Java\\LibraryManagementSystem\\images\\showOptions.gif")); // NOI18N
         jButton2.setText("Retrive");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Answer");
 
@@ -141,6 +200,25 @@ public class Forget extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(423, 339));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        conn = JavaConnect.ConnectDb();
+        search();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        Login ob = new Login();
+        ob.setVisible(true);
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String answer = search();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
