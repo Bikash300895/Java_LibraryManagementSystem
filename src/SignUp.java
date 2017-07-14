@@ -155,7 +155,8 @@ public class SignUp extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(433, 385));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

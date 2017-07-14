@@ -138,7 +138,8 @@ public class Forget extends javax.swing.JFrame {
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(423, 339));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
