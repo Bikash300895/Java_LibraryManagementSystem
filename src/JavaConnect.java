@@ -32,7 +32,7 @@ public class JavaConnect {
         }
     }
     
-    public static void main(String[] args){
-        conn = ConnectDb();
-    }
+//    public static void main(String[] args){
+//        conn = ConnectDb();
+//    }
 }
