@@ -169,7 +169,19 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String username = jTextField1.getText();
+        User user = User.getUserInfo(username);
         
+        String password = jPasswordField1.getText();
+        System.out.println(user.password);
+        System.out.println(password);
+        
+        if(password.equals(user.password)){
+            
+            setVisible(false);
+            Loading ob = new Loading();
+            ob.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
