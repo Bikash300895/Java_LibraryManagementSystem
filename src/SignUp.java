@@ -173,7 +173,6 @@ public class SignUp extends javax.swing.JFrame {
             
             // Show a dialouge that account is created
             JOptionPane.showMessageDialog(null, "New Account is created");
-            pst.close();
                     
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
