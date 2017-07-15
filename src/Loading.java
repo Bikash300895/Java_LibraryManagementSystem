@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,13 +11,44 @@
  *
  * @author user
  */
-public class Loading extends javax.swing.JFrame {
+public class Loading extends javax.swing.JFrame implements Runnable{
+    Thread th;
+    int s = 0;
 
     /**
      * Creates new form Loading
      */
     public Loading() {
+        super("Loading");
         initComponents();
+        th = new Thread((Runnable) this);
+    }
+    
+    public void setUpLoading(){
+        setVisible(false);
+        th.start();
+    }
+    
+    public void run(){
+        try{
+            for(int i=0; i<=200; i++){
+                s = s+1;
+                int m= jProgressBar1.getMaximum();
+                int v = jProgressBar1.getValue();
+                
+                if(v<m){
+                    jProgressBar1.setValue(jProgressBar1.getValue()+1);
+                } else {
+                    i = 201;
+                    setVisible(false);
+                    Home ob = new Home();
+                    ob.setVisible(true);
+                }
+                Thread.sleep(25);
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
