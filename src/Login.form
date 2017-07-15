@@ -136,11 +136,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Projects\Java\LibraryManagementSystem\images\icon_key.gif"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField1">
         </Component>
@@ -159,9 +154,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Projects\Java\LibraryManagementSystem\images\inside-logout-icon.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Login"/>
           </Properties>
           <Events>
@@ -170,9 +162,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Projects\Java\LibraryManagementSystem\images\mini_Icon_ForgotPassw.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Forget Password"/>
           </Properties>
           <Events>
@@ -180,11 +169,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Projects\Java\LibraryManagementSystem\images\Security-Password-2-icon.png"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>

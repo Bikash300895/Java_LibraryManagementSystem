@@ -180,6 +180,7 @@ public class Login extends javax.swing.JFrame {
             
             setVisible(false);
             Loading ob = new Loading();
+            ob.setUpLoading();
             ob.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
