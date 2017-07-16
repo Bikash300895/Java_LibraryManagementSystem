@@ -1,3 +1,9 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +16,16 @@
  */
 public class NewStudent extends javax.swing.JFrame {
 
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pst;
     /**
      * Creates new form NewStudent
      */
     public NewStudent() {
+        super("New Student");
         initComponents();
+        conn = JavaConnect.ConnectDb();
     }
 
     /**
@@ -134,15 +145,34 @@ public class NewStudent extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(430, 363));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String sql = "insert into student(id, name, dept, batch) values(?,?,?,?)";
+        
+        try{
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, jTextField1.getText());
+            pst.setString(2, jTextField2.getText());
+            pst.setString(3, jTextField3.getText());
+            pst.setString(4, jTextField4.getText());
+
+            pst.execute();
+            
+            JOptionPane.showMessageDialog(null, "New Student Added");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
+        Home ob = new Home();
+        ob.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
