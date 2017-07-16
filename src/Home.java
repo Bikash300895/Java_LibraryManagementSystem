@@ -71,6 +71,11 @@ public class Home extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon("D:\\PROJECTS\\Java_LibraryManagementSystem\\images\\statistics-icon.png")); // NOI18N
 
         jButton3.setIcon(new javax.swing.ImageIcon("D:\\PROJECTS\\Java_LibraryManagementSystem\\images\\addusericon_3.png")); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -193,6 +198,13 @@ public class Home extends javax.swing.JFrame {
         setVisible(false);
         ob.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        NewStudent ob = new NewStudent();
+        setVisible(false);
+        ob.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

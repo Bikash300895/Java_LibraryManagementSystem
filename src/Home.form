@@ -234,6 +234,9 @@
               <Image iconType="2" name="D:\PROJECTS\Java_LibraryManagementSystem\images\addusericon_3.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
