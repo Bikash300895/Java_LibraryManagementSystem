@@ -44,7 +44,7 @@ public class Loading extends javax.swing.JFrame implements Runnable{
                     Home ob = new Home();
                     ob.setVisible(true);
                 }
-                Thread.sleep(25);
+                Thread.sleep(10);
             }
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
