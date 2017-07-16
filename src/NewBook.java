@@ -1,3 +1,10 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Random;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,12 +16,23 @@
  * @author bikas
  */
 public class NewBook extends javax.swing.JFrame {
+    Connection conn;
+    ResultSet rs;
+    PreparedStatement pst;
 
     /**
      * Creates new form NewBook
      */
     public NewBook() {
+        super("New Book");
         initComponents();
+        conn = JavaConnect.ConnectDb();
+        RandomId();
+    }
+    
+    public void RandomId(){
+        Random rd = new Random();
+        jTextField1.setText(""+rd.nextInt(1000+1));
     }
 
     /**
@@ -61,6 +79,7 @@ public class NewBook extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
+        jTextField1.setEditable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -166,7 +185,23 @@ public class NewBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String sql = "insert into book(book_id, name, edition, publisher, price, pages) values (?, ?, ?, ?, ?, ?)";
+        
+        try{
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, jTextField1.getText());
+            pst.setString(2, jTextField2.getText());
+            pst.setString(3, (String) jComboBox1.getSelectedItem());
+            pst.setString(4, jTextField4.getText());
+            pst.setString(5, jTextField5.getText());
+            pst.setString(6, jTextField6.getText());
+            pst.execute();
+            
+            JOptionPane.showMessageDialog(null, "New Book Added");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
